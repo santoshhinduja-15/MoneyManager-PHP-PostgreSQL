@@ -91,21 +91,13 @@ Follow these steps to run MoneyManager locally.
 - Execute the SQL commands provided in the sql/moneymanager.sql file.
 - Verify that the required tables and indexes have been created.
 
-4. Configure Database Connection
-Open: backend/config/database.php
+4. Configure Database Connection <br>
+Open the backend/config/database.php and Configure your PostgreSQL connection details
 
-Configure your PostgreSQL connection details:
-<?php
-$host = "localhost";
-$port = "5432";
-$dbname = "moneymanager_db";
-$username = "your_postgresql_username";
-$password = "your_postgresql_password";
-
-5. Start the PHP Development Server
+5. Start the PHP Development Server <br>
 Open the terminal in the project root directory and execute: php -S localhost:8000
 
-6. Open the Application
+6. Open the Application <br>
 Visit the following URL in your browser: http://localhost:8000
 Register a new account to start using MoneyManager.
 
