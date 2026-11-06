@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MoneyManager | Your Money, All in One Place</title>
+
+    <meta name="description"
+        content="Manage your income, expenses, transactions and savings with MoneyManager.">
+
+    <link rel="icon" href="frontend/images/logo-light.jpg" type="image/jpeg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="frontend/css/index.css">
+
+    <!-- Apply saved theme before page renders -->
+    <script>
+        try {
+            const savedTheme = localStorage.getItem("moneyManagerTheme");
+
+            if (savedTheme === "dark" || savedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            }
+        } catch (error) {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+
+                <img src="frontend/images/logo-light.jpg"
+                    alt="MoneyManager Logo"
+                    class="brand-logo"
+                    id="navbarLogo">
+
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                id="navbarToggler"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+            <div class="navbar-collapse" id="navbarMenu">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+
+                </ul>
+
+                <div class="navbar-actions">
+
+                    <button class="theme-toggle" id="themeToggle"
+                        type="button"
+                        aria-label="Switch to dark mode"
+                        title="Switch theme">
+
+                        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+
+                    </button>
+
+                    <a href="frontend/login.html" class="btn btn-login">
+                        Login
+                    </a>
+
+                    <a href="frontend/signup.html" class="btn btn-signup">
+                        Get Started
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7 hero-content">
+
+                    <span class="hero-label">
+                        <i class="bi bi-wallet2"></i>
+                        Smart Money Management
+                    </span>
+
+                    <h1 style="text-align: justify;">
+                        Your Money Deserves
+                        <span>Better Management.</span>
+                    </h1>
+
+                    <p class="hero-tagline">
+                        Your Money, Your Income, Your Expenses,
+                        All in One Place.
+                    </p>
+
+                    <p class="hero-description">
+                        Take control of your finances with MoneyManager.
+                        Track your income, manage expenses, organize
+                        transactions and monitor your savings easily.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="frontend/signup.html" class="btn btn-primary-custom">
+                            Get Started
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                        <a href="#features" class="btn btn-outline-custom">
+                            Explore Features
+                        </a>
+
+                    </div>
+
+                    <div class="hero-note">
+                        <i class="bi bi-check-circle-fill"></i>
+                        Simple, organized and easy money management.
+                    </div>
+
+                </div>
+
+
+                <!-- Brand Logo Instead of Dashboard Preview -->
+                <div class="col-lg-5">
+
+                    <div class="hero-logo-container">
+
+                        <div class="hero-logo-card">
+
+                            <img src="frontend/images/logo-light.jpg"
+                                alt="MoneyManager"
+                                class="hero-logo"
+                                id="heroLogo">
+
+                            <div class="hero-logo-divider"></div>
+
+                            <p>
+                                Your Money, Your Income,
+                                Your Expenses, All in One Place.
+                            </p>
+
+                            <div class="hero-logo-caption">
+                                <i class="bi bi-shield-check"></i>
+                                Manage your finances in one place.
+                            </div>
+
+                        </div>
+
+                        <div class="floating-icon floating-one">
+                            <i class="bi bi-currency-rupee"></i>
+                        </div>
+
+                        <div class="floating-icon floating-two">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+    <section class="section-padding about-section" id="about">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">ABOUT MONEYMANAGER</span>
+
+                <h2>
+                    Manage Your Money
+                    <span>Without the Confusion.</span>
+                </h2>
+
+                <p>
+                    MoneyManager is a personal finance management
+                    application designed to help you keep track of
+                    your income and expenses in one convenient place.
+                </p>
+
+            </div>
+
+            <div class="about-content">
+
+                <div class="about-icon">
+                    <i class="bi bi-piggy-bank"></i>
+                </div>
+
+                <div>
+
+                    <h3>Everything Organized in One Place</h3>
+
+                    <p>
+                        Record your daily transactions, create your own
+                        categories, view your financial summaries and
+                        understand where your money goes.
+                        MoneyManager makes managing your finances
+                        simpler and more organized.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="section-padding features-section" id="features">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">OUR FEATURES</span>
+
+                <h2>
+                    Everything You Need to
+                    <span style="display: inline;">Manage Your Finances.</span>
+                </h2>
+
+                <p>
+                    Useful tools to help you track, organize
+                    and understand your money.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-blue">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+
+                        <h4>Income & Expense Tracking</h4>
+
+                        <p>
+                            Record your income and expenses with
+                            transaction details, amounts and dates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-green">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+
+                        <h4>Financial Dashboard</h4>
+
+                        <p>
+                            View your total income, expenses
+                            and net savings through one dashboard.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-purple">
+                            <i class="bi bi-tags"></i>
+                        </div>
+
+                        <h4>Custom Categories</h4>
+
+                        <p>
+                            Create and manage your own income
+                            and expense categories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-orange">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+
+                        <h4>Transaction History</h4>
+
+                        <p>
+                            View, search, filter, edit and
+                            delete your previous transactions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-pink">
+                            <i class="bi bi-person-lock"></i>
+                        </div>
+
+                        <h4>Personal Account</h4>
+
+                        <p>
+                            Manage your own account and keep
+                            your financial records separate.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon icon-teal">
+                            <i class="bi bi-moon-stars"></i>
+                        </div>
+
+                        <h4>Dark & Light Mode</h4>
+
+                        <p>
+                            Switch between dark and light themes
+                            according to your preference.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="section-padding how-section" id="how-it-works">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">HOW IT WORKS</span>
+
+                <h2>
+                    Start Managing Your Money
+                    <span>In Three Simple Steps.</span>
+                </h2>
+
+                <p>
+                    Getting started with MoneyManager is simple.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="step-card">
+
+                        <div class="step-number">01</div>
+
+                        <div class="step-icon">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+
+                        <h4>Create Your Account</h4>
+
+                        <p>
+                            Sign up with your name, username
+                            and password.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="step-card">
+
+                        <div class="step-number">02</div>
+
+                        <div class="step-icon">
+                            <i class="bi bi-journal-plus"></i>
+                        </div>
+
+                        <h4>Add Your Transactions</h4>
+
+                        <p>
+                            Record your income and expenses
+                            with their categories and details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="step-card">
+
+                        <div class="step-number">03</div>
+
+                        <div class="step-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+
+                        <h4>Monitor Your Finances</h4>
+
+                        <p>
+                            Check your dashboard to understand
+                            your income, expenses and savings.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Benefits Section -->
+    <section class="section-padding benefits-section">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-5">
+
+                    <span class="section-label">WHY MONEYMANAGER</span>
+
+                    <h2 class="benefits-heading">
+                        Make Your Financial
+                        Records <span>Simple.</span>
+                    </h2>
+
+                    <p class="benefits-description">
+                        Keep your financial information organized
+                        and make informed decisions with a clear
+                        view of your money.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-7">
+
+                    <div class="benefit-list">
+
+                        <div class="benefit-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Manage income and expenses in one place.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Organize transactions using custom categories.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Find transactions using search and filters.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Monitor your savings and spending.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Access a responsive interface on different devices.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="section-padding faq-section" id="faq">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">FAQ</span>
+
+                <h2>
+                    Frequently Asked
+                    <span>Questions.</span>
+                </h2>
+
+                <p>
+                    Find answers to some common questions
+                    about MoneyManager.
+                </p>
+
+            </div>
+
+            <div class="faq-container">
+
+                <details class="faq-item">
+
+                    <summary>
+                        What is MoneyManager?
+                        <i class="bi bi-plus-lg"></i>
+                    </summary>
+
+                    <p>
+                        MoneyManager is a personal finance management
+                        application that helps you record and organize
+                        your income and expenses.
+                    </p>
+
+                </details>
+
+
+                <details class="faq-item">
+
+                    <summary>
+                        Do I need an account to use MoneyManager?
+                        <i class="bi bi-plus-lg"></i>
+                    </summary>
+
+                    <p>
+                        Yes. You need to create an account and log in
+                        to manage your personal financial records.
+                    </p>
+
+                </details>
+
+
+                <details class="faq-item">
+
+                    <summary>
+                        Can I create my own categories?
+                        <i class="bi bi-plus-lg"></i>
+                    </summary>
+
+                    <p>
+                        Yes. You can create and manage your own
+                        income and expense categories.
+                    </p>
+
+                </details>
+
+
+                <details class="faq-item">
+
+                    <summary>
+                        Can I edit or delete my transactions?
+                        <i class="bi bi-plus-lg"></i>
+                    </summary>
+
+                    <p>
+                        Yes. You can view, edit and delete
+                        your existing transactions.
+                    </p>
+
+                </details>
+
+
+                <details class="faq-item">
+
+                    <summary>
+                        Can I use MoneyManager on mobile devices?
+                        <i class="bi bi-plus-lg"></i>
+                    </summary>
+
+                    <p>
+                        Yes. MoneyManager is designed with a
+                        responsive interface for desktop,
+                        tablet and mobile screens.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Call To Action -->
+    <section class="cta-section">
+
+        <div class="container">
+
+            <div class="cta-content">
+
+                <span class="section-label">TAKE CONTROL TODAY</span>
+
+                <h2>
+                    Ready to Manage Your Money Better?
+                </h2>
+
+                <p>
+                    Start organizing your income and expenses
+                    with MoneyManager.
+                </p>
+
+                <a href="frontend/signup.html" class="btn btn-cta">
+                    Create Your Account
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-lg-5">
+
+                    <a href="index.html" class="footer-brand">
+
+                        <img src="frontend/images/logo-light.jpg"
+                            alt="MoneyManager Logo"
+                            id="footerLogo">
+
+                    </a>
+
+                    <p class="footer-description">
+                        Your Money, Your Income, Your Expenses,
+                        All in One Place.
+                    </p>
+
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+
+                    <h5>Quick Links</h5>
+
+                    <ul class="footer-links">
+
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="col-6 col-lg-4">
+
+                    <h5>Account</h5>
+
+                    <ul class="footer-links">
+
+                        <li><a href="frontend/login.html">Login</a></li>
+                        <li><a href="frontend/signup.html">Create Account</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; <span id="currentYear"></span>
+                    MoneyManager. All Rights Reserved.
+                </p>
+
+                <p>
+                    Your Money. Your Control.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Custom JavaScript -->
+    <script src="frontend/js/index.js"></script>
+
+</body>
+
+</html>

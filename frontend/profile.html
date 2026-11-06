@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | MoneyManager</title>
+
+    <script>
+        const savedTheme = localStorage.getItem("moneyManagerTheme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="icon" type="image/jpeg" href="images/logo-light.jpg">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+
+    <!-- Shared Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- Navbar -->
+        <nav class="dashboard-navbar">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between">
+
+                    <div class="navbar-left">
+                        <button
+                            type="button"
+                            class="sidebar-menu-toggle"
+                            id="sidebarMenuToggle"
+                            aria-label="Open sidebar"
+                        >
+                            <i class="bi bi-list"></i>
+                        </button>
+
+                        <span class="navbar-page-title">My Profile</span>
+                    </div>
+
+                    <div class="navbar-actions">
+                        <button
+                            type="button"
+                            class="theme-toggle"
+                            id="themeToggle"
+                            aria-label="Toggle theme"
+                        >
+                            <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="profile-main">
+            <div class="container-fluid px-4">
+
+                <!-- Page Heading -->
+                <section class="page-heading">
+                    <div>
+                        <p class="page-label">ACCOUNT SETTINGS</p>
+
+                        <h1>My Profile</h1>
+
+                        <p class="page-description">
+                            View and manage your personal account information.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- General Alert -->
+                <div
+                    id="alertMessage"
+                    class="alert d-none"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+                <!-- Loading -->
+                <div id="profileLoading" class="loading-state">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <p>Loading profile...</p>
+                </div>
+
+                <!-- Profile Content -->
+                <div id="profileContent" class="d-none">
+
+                    <div class="profile-card">
+
+                        <!-- Profile Header -->
+                        <div class="profile-card-header">
+
+                            <div class="profile-avatar" id="profileAvatar">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+
+                            <div class="profile-header-details">
+                                <h2 id="displayFullName">Loading...</h2>
+
+                                <p id="displayUsername">@username</p>
+
+                                <span class="account-status">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Active Account
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <hr class="profile-divider">
+
+                        <!-- Profile Form -->
+                        <form id="profileForm" novalidate>
+
+                            <div class="profile-section-heading">
+                                <h3>Personal Information</h3>
+
+                                <p>
+                                    Update your name and username below.
+                                </p>
+                            </div>
+
+                            <!-- Full Name -->
+                            <div class="mb-4">
+
+                                <label for="fullName" class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fullName"
+                                    maxlength="50"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                >
+
+                                <div
+                                    class="field-error-container"
+                                    id="fullNameError"
+                                ></div>
+
+                            </div>
+
+                            <!-- Username -->
+                            <div class="mb-4">
+
+                                <label for="username" class="form-label">
+                                    Username
+                                </label>
+
+                                <div class="input-group">
+                                    <span class="input-group-text">@</span>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="username"
+                                        maxlength="30"
+                                        placeholder="Enter your username"
+                                        autocomplete="username"
+                                    >
+                                </div>
+
+                                <div
+                                    class="form-text profile-help-text"
+                                >
+                                    3 to 30 characters. Letters, numbers,
+                                    dots, underscores and hyphens are allowed.
+                                </div>
+
+                                <div
+                                    class="field-error-container"
+                                    id="usernameError"
+                                ></div>
+
+                            </div>
+
+                            <!-- Account Created -->
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Account Created
+                                </label>
+
+                                <div class="account-created-box">
+                                    <i class="bi bi-calendar-check"></i>
+
+                                    <span id="accountCreated">
+                                        Loading...
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="profile-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn cancel-profile-btn"
+                                    id="cancelChangesButton"
+                                >
+                                    Cancel
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="btn save-profile-btn"
+                                    id="saveProfileButton"
+                                    disabled
+                                >
+                                    <i class="bi bi-check2"></i>
+                                    Save Changes
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Shared Footer -->
+        <div id="footerContainer"></div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shared Components -->
+    <script src="js/components.js"></script>
+
+    <!-- Profile JS -->
+    <script src="js/profile.js"></script>
+
+</body>
+</html>

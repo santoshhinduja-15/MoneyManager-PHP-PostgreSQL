@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | MoneyManager</title>
+
+    <script>
+        const savedTheme = localStorage.getItem("moneyManagerTheme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="icon" type="image/jpeg" href="images/logo-light.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="auth-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a href="../index.html" class="brand-link">
+                <img src="images/logo-light.jpg" alt="MoneyManager Logo"
+                    class="brand-logo" id="brandLogo">
+            </a>
+
+            <button type="button" class="theme-toggle" id="themeToggle"
+                aria-label="Switch theme" title="Switch theme">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <!-- Signup Section -->
+    <main class="signup-section">
+
+        <div class="container">
+
+            <div class="signup-card">
+
+                <!-- Signup Header -->
+                <div class="signup-header">
+
+                    <div class="signup-icon">
+                        <i class="bi bi-person-plus-fill"></i>
+                    </div>
+
+                    <h1>Create Your Account</h1>
+
+                    <p>Start managing your income and expenses with MoneyManager.</p>
+
+                </div>
+
+
+                <!-- General Alert -->
+                <div id="alertMessage" class="alert d-none" role="alert"></div>
+
+
+                <!-- Signup Form -->
+                <form id="signupForm" novalidate>
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+
+                        <label for="fullName" class="form-label">Full Name</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-person input-icon"></i>
+
+                            <input type="text" id="fullName" name="full_name"
+                                class="form-control"
+                                placeholder="Enter your full name"
+                                maxlength="50" autocomplete="name" required>
+
+                        </div>
+
+                        <div class="field-error" id="fullNameError"></div>
+
+                    </div>
+
+
+                    <!-- Username -->
+                    <div class="form-group">
+
+                        <label for="username" class="form-label">Username</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-at input-icon"></i>
+
+                            <input type="text" id="username" name="username"
+                                class="form-control"
+                                placeholder="Choose a username"
+                                maxlength="30" autocomplete="username" required>
+
+                        </div>
+
+                        <div class="field-error" id="usernameError"></div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="password" class="form-label">Password</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-lock input-icon"></i>
+
+                            <input type="password" id="password" name="password"
+                                class="form-control"
+                                placeholder="Create a password"
+                                maxlength="64" autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle"
+                                data-target="password" aria-label="Show password">
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <small class="input-hint">
+                            8-64 characters, including uppercase, lowercase, number and special character.
+                        </small>
+
+                        <div class="field-error" id="passwordError"></div>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+
+                        <label for="confirmPassword" class="form-label">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-lock-fill input-icon"></i>
+
+                            <input type="password" id="confirmPassword"
+                                name="confirm_password" class="form-control"
+                                placeholder="Enter your password again"
+                                maxlength="64" autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Show confirm password">
+                                <i class="bi bi-eye"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="field-error" id="confirmPasswordError"></div>
+
+                    </div>
+
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-signup" id="signupButton">
+
+                        <span id="signupButtonText">Create Account</span>
+
+                        <span id="signupSpinner"
+                            class="spinner-border spinner-border-sm d-none"
+                            aria-hidden="true"></span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- Login Link -->
+                <div class="login-link">
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </div>
+
+
+                <!-- Back to Home -->
+                <div class="back-home">
+
+                    <a href="../index.html">
+                        <i class="bi bi-arrow-left"></i>
+                        Back to Home
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/signup.js"></script>
+
+</body>
+</html>

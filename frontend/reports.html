@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | MoneyManager</title>
+
+    <script>
+        const savedTheme = localStorage.getItem("moneyManagerTheme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="icon" type="image/jpeg" href="images/logo-light.jpg">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+
+<body>
+
+    <!-- Shared Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <div class="dashboard-layout">
+
+        <!-- Navbar -->
+        <nav class="dashboard-navbar">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between">
+
+                    <div class="navbar-left">
+                        <button
+                            type="button"
+                            class="sidebar-menu-toggle"
+                            id="sidebarMenuToggle"
+                            aria-label="Open sidebar"
+                        >
+                            <i class="bi bi-list"></i>
+                        </button>
+
+                        <span class="navbar-page-title">Reports</span>
+                    </div>
+
+                    <div class="navbar-actions">
+                        <button
+                            type="button"
+                            class="theme-toggle"
+                            id="themeToggle"
+                            aria-label="Toggle theme"
+                        >
+                            <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="reports-main">
+            <div class="container-fluid px-4">
+
+                <!-- Heading -->
+                <section class="page-heading">
+                    <div>
+                        <p class="page-label">MONEY MANAGEMENT</p>
+                        <h1>Financial Reports</h1>
+                        <p class="page-description">
+                            Understand your income, expenses and savings.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- General Alert -->
+                <div
+                    id="alertMessage"
+                    class="alert d-none"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+                <!-- Date Filters -->
+                <section class="report-filter-section">
+
+                    <div class="filter-heading">
+                        <div>
+                            <h2>Report Filters</h2>
+                            <p>Select a date range and transaction type.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-end">
+
+                        <div class="col-12 col-md-4">
+                            <label for="startDate" class="form-label">
+                                From Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="startDate"
+                            >
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <label for="endDate" class="form-label">
+                                To Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="endDate"
+                            >
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <label for="typeFilter" class="form-label">
+                                Transaction Type
+                            </label>
+
+                            <select class="form-select" id="typeFilter">
+                                <option value="">All Types</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 d-flex flex-wrap gap-2">
+
+                            <button
+                                type="button"
+                                class="btn apply-filter-btn"
+                                id="applyFilterButton"
+                            >
+                                <i class="bi bi-funnel"></i>
+                                Apply Filters
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn reset-filter-btn"
+                                id="resetFiltersButton"
+                            >
+                                <i class="bi bi-arrow-counterclockwise"></i>
+                                Reset Filters
+                            </button>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Loading -->
+                <div id="reportsLoading" class="loading-state">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <p>Generating your report...</p>
+                </div>
+
+                <!-- Report Content -->
+                <div id="reportContent" class="d-none">
+
+                    <!-- Summary Cards -->
+                    <section class="report-summary">
+
+                        <div class="report-card">
+                            <div class="report-icon income-icon">
+                                <i class="bi bi-arrow-down-left-circle"></i>
+                            </div>
+
+                            <div>
+                                <p>Total Income</p>
+                                <h3 id="totalIncome">₹0.00</h3>
+                            </div>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="report-icon expense-icon">
+                                <i class="bi bi-arrow-up-right-circle"></i>
+                            </div>
+
+                            <div>
+                                <p>Total Expenses</p>
+                                <h3 id="totalExpenses">₹0.00</h3>
+                            </div>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="report-icon savings-icon">
+                                <i class="bi bi-wallet2"></i>
+                            </div>
+
+                            <div>
+                                <p>Net Savings</p>
+                                <h3 id="netSavings">₹0.00</h3>
+                            </div>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="report-icon count-icon">
+                                <i class="bi bi-receipt"></i>
+                            </div>
+
+                            <div>
+                                <p>Total Transactions</p>
+                                <h3 id="totalTransactions">0</h3>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- Charts -->
+                    <section class="report-charts">
+
+                        <div class="report-panel">
+                            <div class="panel-heading">
+                                <h2>Income vs Expenses</h2>
+                                <p>Comparison for the selected period.</p>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="incomeExpenseChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="report-panel">
+                            <div class="panel-heading">
+                                <h2>Category Breakdown</h2>
+                                <p>Income and expenses by category.</p>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+
+                            <p id="categoryChartEmpty" class="chart-empty d-none">
+                                No category data available.
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- Monthly Report -->
+                    <section class="report-panel monthly-panel">
+
+                        <div class="panel-heading">
+                            <h2>Monthly Breakdown</h2>
+                            <p>Month-wise income, expenses and savings.</p>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th class="text-end">Income</th>
+                                        <th class="text-end">Expenses</th>
+                                        <th class="text-end">Savings</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="monthlyReportBody"></tbody>
+                            </table>
+                        </div>
+
+                        <div id="monthlyEmpty" class="table-empty d-none">
+                            No monthly data available.
+                        </div>
+
+                    </section>
+
+                    <!-- Category Report -->
+                    <section class="report-panel category-panel">
+
+                        <div class="panel-heading">
+                            <h2>Category-wise Report</h2>
+                            <p>Detailed breakdown of your categories.</p>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Type</th>
+                                        <th class="text-end">Transactions</th>
+                                        <th class="text-end">Total Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="categoryReportBody"></tbody>
+                            </table>
+                        </div>
+
+                        <div id="categoryEmpty" class="table-empty d-none">
+                            No category data available.
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <!-- Empty State -->
+                <div id="reportEmpty" class="report-empty d-none">
+                    <i class="bi bi-bar-chart"></i>
+
+                    <h3>No Report Data Found</h3>
+
+                    <p>
+                        No transactions were found for the selected filters.
+                    </p>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Shared Footer -->
+        <div id="footerContainer"></div>
+
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shared Components -->
+    <script src="js/components.js"></script>
+
+    <!-- Reports JS -->
+    <script src="js/reports.js"></script>
+
+</body>
+</html>

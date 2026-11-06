@@ -1,0 +1,85 @@
+<aside class="app-sidebar" id="appSidebar">
+  <!-- Sidebar Header -->
+  <div class="sidebar-header">
+    <a href="dashboard.html" class="sidebar-brand">
+      <img
+        src="images/logo-light.jpg"
+        alt="MoneyManager Logo"
+        class="sidebar-logo"
+        id="sidebarLogo"
+      />
+    </a>
+
+    <button
+      type="button"
+      class="sidebar-close"
+      id="sidebarClose"
+      aria-label="Close sidebar"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="sidebar-navigation">
+    <div class="sidebar-menu-group">
+      <p class="sidebar-section-title">MAIN MENU</p>
+
+      <!-- Dashboard -->
+      <a href="dashboard.html" class="sidebar-link" data-page="dashboard">
+        <i class="bi bi-grid-1x2"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <!-- Transactions -->
+      <a href="transactions.html" class="sidebar-link" data-page="transactions">
+        <i class="bi bi-arrow-left-right"></i>
+        <span>Transactions</span>
+      </a>
+
+      <!-- Categories -->
+      <a href="categories.html" class="sidebar-link" data-page="categories">
+        <i class="bi bi-tags"></i>
+        <span>Categories</span>
+      </a>
+
+      <!-- Reports and Analytics -->
+      <a href="reports.html" class="sidebar-link" data-page="reports">
+        <i class="bi bi-bar-chart-line"></i>
+        <span>Reports & Analytics</span>
+      </a>
+    </div>
+
+    <!-- Account Navigation -->
+    <div class="sidebar-menu-group">
+      <p class="sidebar-section-title">ACCOUNT</p>
+
+      <!-- Profile -->
+      <a href="profile.html" class="sidebar-link" data-page="profile">
+        <i class="bi bi-person-circle"></i>
+        <span>My Profile</span>
+      </a>
+
+      <!-- Change Password -->
+      <a
+        href="change-password.html"
+        class="sidebar-link"
+        data-page="change-password"
+      >
+        <i class="bi bi-shield-lock"></i>
+        <span>Change Password</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Sidebar Footer / Logout -->
+  <div class="sidebar-bottom">
+    <button type="button" class="sidebar-logout" id="sidebarLogoutButton">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Mobile Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
